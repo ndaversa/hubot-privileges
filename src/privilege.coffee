@@ -69,16 +69,19 @@ module.exports = (robot) ->
       msg.reply s
 
   robot.respond /privilege(:?\s([^\s]*))?/i, (msg)->
+    who = msg.message.user?.name?.toLowerCase()
     action = msg.match[1]?.trim().toLowerCase()
-    if action == 'clear'
+    response = "Everyone is awesome"
+
+    if action == 'clear' and !isIgnored who
       robot.brain.set PRIVILEGE_TABLE_KEY, {}
     else
       table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
-      response = "Everyone is awesome"
       ignored = []
       for id of table
         user = robot.brain.userForId id
         ignored.push user.name
       if ignored.length > 0
         response = "I'm unhappy with: #{ignored}. Should I forgive?"
-      msg.send response
+
+    msg.send response
