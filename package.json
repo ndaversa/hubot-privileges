@@ -1,8 +1,8 @@
 {
-  "name": "hubot-privilege",
-  "description": "Hubot is so smart! He can ignore you and your friends.",
-  "version": "0.0.5",
-  "author": "dtaniwaki",
+  "name": "hubot-privileges",
+  "description": "Sometimes hubot gets abused. Stop the abuse by taking hubot away from them",
+  "version": "1.0.0",
+  "author": "ndaversa",
   "license": "MIT",
   "keywords": [
     "hubot",
@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/dtaniwaki/hubot-privilege.git"
+    "url": "git://github.com/ndaversa/hubot-privilege.git"
   },
   "bugs": {
-    "url": "https://github.com/dtaniwaki/hubot-privilege/issues"
+    "url": "https://github.com/ndaversa/hubot-privilege/issues"
   },
   "dependencies": {
     "hubot": ">=2.3.0",
