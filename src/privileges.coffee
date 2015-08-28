@@ -50,6 +50,7 @@ module.exports = (robot) ->
         table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
         table[user.id] = true
         robot.brain.set PRIVILEGE_TABLE_KEY, table
+        console.log "#{msg.message.user?.name} asked for #{who} to be ignored"
 
   robot.respond /forgive\s([^\s]*)/i, (msg)->
     who = msg.match[1].trim().toLowerCase()
@@ -68,6 +69,7 @@ module.exports = (robot) ->
         table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
         delete table[user.id]
         robot.brain.set PRIVILEGE_TABLE_KEY, table
+        console.log "#{msg.message.user?.name} asked for #{who} to be forgiven"
       msg.reply s
 
   robot.respond /privilege(:?\s([^\s]*))?/i, (msg)->
@@ -77,6 +79,7 @@ module.exports = (robot) ->
 
     if action == 'clear' and !isIgnored who
       robot.brain.set PRIVILEGE_TABLE_KEY, {}
+      console.log "#{who} asked for privileges to be reset"
     else
       table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
       ignored = []
