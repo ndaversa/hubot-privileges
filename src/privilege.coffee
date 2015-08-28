@@ -15,9 +15,10 @@ PRIVILEGE_TABLE_KEY = 'hub-privilege-table'
 isIgnored = (username) ->
   table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
   ignored = false
-  if username? and user?.id?
+  if username?
     user = robot.brain.userForName username
-    ignored = table[user.id]
+    if user
+      ignored = table[user.id]
   ignored
 
 module.exports = (robot) ->
