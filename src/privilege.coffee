@@ -15,7 +15,7 @@ PRIVILEGE_TABLE_KEY = 'hub-privilege-table'
 isIgnored = (username) ->
   table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
   ignored = false
-  if username?
+  if username? and user?.id?
     user = robot.brain.userForName username
     ignored = table[user.id]
   ignored
@@ -43,11 +43,12 @@ module.exports = (robot) ->
       who = msg.message.user?.name?.toLowerCase()
     if !isIgnored who
       user = robot.brain.userForName who
-      s = "I will ignore #{who}"
-      msg.reply s
-      table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
-      table[user.id] = true
-      robot.brain.set PRIVILEGE_TABLE_KEY, table
+      if user
+        s = "I will ignore #{who}"
+        msg.reply s
+        table = robot.brain.get(PRIVILEGE_TABLE_KEY) || {}
+        table[user.id] = true
+        robot.brain.set PRIVILEGE_TABLE_KEY, table
 
   robot.respond /forgive\s([^\s]*)/i, (msg)->
     who = msg.match[1].trim().toLowerCase()
@@ -80,7 +81,7 @@ module.exports = (robot) ->
       ignored = []
       for id of table
         user = robot.brain.userForId id
-        ignored.push user.name
+        ignored.push user.name if user
       if ignored.length > 0
         response = "I'm unhappy with: #{ignored}. Should I forgive?"
 
