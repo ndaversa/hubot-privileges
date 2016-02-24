@@ -1,7 +1,7 @@
 {
   "name": "hubot-privileges",
   "description": "Sometimes hubot gets abused. Stop the abuse by taking hubot away from them",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "ndaversa",
   "license": "MIT",
   "keywords": [
