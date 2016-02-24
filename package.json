@@ -16,8 +16,12 @@
     "url": "https://github.com/ndaversa/hubot-privilege/issues"
   },
   "dependencies": {
-    "hubot": ">=2.3.0",
-    "hubot-scripts": "*"
+    "blanket": "^1.1.10",
+    "chai": "^3.5.0",
+    "hubot": "^2.18.0",
+    "hubot-scripts": "*",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
   },
   "devDependencies": {
     "blanket": "~1.1.6",
